@@ -47,8 +47,8 @@ class DeepLinkActivity : Activity() {
 ```
 
 For a link to reach the *same* running Activity instance via `onNewIntent` instead of
-creating a new one on top of it, declare that Activity `android:launchMode="singleTask"`
-(see [`example/app/src/main/AndroidManifest.xml`](../example/app/src/main/AndroidManifest.xml)).
+creating a new one on top of it, declare that Activity `android:launchMode="singleTask"` in
+your manifest.
 
 `handleDeepLink` is safe to call unconditionally, including from both `onCreate` and
 `onNewIntent` for what turns out to be the same link — with no link attached it does

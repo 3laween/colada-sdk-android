@@ -1,10 +1,1 @@
-# Standard Android/Gradle build output — this repo carries no implementation, but the
-# example app still produces local build artifacts that don't belong in version control.
-example/local.properties
-example/.gradle/
-example/.kotlin/
-example/build/
-example/app/build/
-example/*.iml
-example/.idea/
 .DS_Store

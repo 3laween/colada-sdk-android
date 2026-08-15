@@ -8,9 +8,9 @@ signal — resolves which campaign acquired the user, and durably delivers the e
 measure what that campaign did afterwards. **It's designed to never block or crash your
 app.**
 
-This repository is the public, developer-facing home for the SDK: documentation, a working
-example app, and release history. The SDK's implementation is closed-source and distributed
-only as a compiled Maven artifact — see [Installation](#installation) below.
+This repository is the public, developer-facing home for the SDK: documentation and release
+history. The SDK's implementation is closed-source and distributed only as a compiled Maven
+artifact — see [Installation](#installation) below.
 
 ---
 
@@ -37,11 +37,10 @@ dependencies {
 }
 ```
 
-> **Status note:** the SDK is not yet published to Maven Central. Until it is,
-> [`example/`](example) resolves this same coordinate from `mavenLocal()`, built from the
-> SDK's private source repository — see [`example/settings.gradle.kts`](example/settings.gradle.kts)
-> for the exact setup and its Maven Central TODO. Once published, this line works as
-> written, with no other change to your build.
+> **Status note:** the SDK is not yet published to Maven Central. Until it is, this
+> coordinate resolves from `mavenLocal()` instead — add `mavenLocal()` to your
+> `settings.gradle.kts` repositories. Once published, this line works as written, with no
+> other change to your build.
 
 `colada-android` depends on `colada-core` and re-exports its public types
 (`AttributionResult`, `ColadaEvent`, `DeferredDeepLink`, etc.), so this single line is
@@ -91,21 +90,8 @@ three lines) is in [`docs/deep-links.md`](docs/deep-links.md) — read that befo
 | [`COMPATIBILITY.md`](COMPATIBILITY.md) | Supported Android/AGP/Gradle/Kotlin/JDK versions |
 | [`CHANGELOG.md`](CHANGELOG.md) | Release history |
 
-## Example app
-
-[`example/`](example) is a small, real Android app that consumes the SDK exactly the way
-your app would — as a Maven dependency, never as source. It demonstrates initialization,
-`setUser`/`clearUser`/`track`, deep-link forwarding, the attribution listener, and deferred
-deep link consumption, all in one screen.
-
-```bash
-cd example
-cp local.properties.example local.properties   # then fill in your tenant key
-./gradlew :app:installDebug
-```
-
 ## License
 
-This repository (documentation, example app, and its own source) is licensed under the
+This repository (documentation and its own source) is licensed under the
 [MIT License](LICENSE). The compiled SDK distributed via Maven is Colada's proprietary
 software — see the license terms attached to the published artifact.

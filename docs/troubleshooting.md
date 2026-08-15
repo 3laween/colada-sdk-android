@@ -42,6 +42,5 @@ types.
 
 ## Still stuck?
 
-Diff your integration against [`example/`](../example) with your own tenant key — if the
-example app behaves as expected and your app doesn't, the difference is in your
-integration.
+Walk back through [`getting-started.md`](getting-started.md) step by step — the most common
+cause of an unexpected result is a step that got skipped, not a bug.

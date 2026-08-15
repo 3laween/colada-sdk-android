@@ -6,9 +6,6 @@ finish, assuming a project that already builds.
 **Also read:** [`events.md`](events.md) (which event to fire when),
 [`troubleshooting.md`](troubleshooting.md) (when something doesn't attribute).
 
-Every code block below also appears, compiling, in [`example/`](../example) — if something
-doesn't work as described, diff your integration against the example app first.
-
 ---
 
 ## Before you start
@@ -23,8 +20,8 @@ doesn't work as described, diff your integration against the example app first.
 
 One thing about the key: **it is public by design** — it ships inside your APK and
 identifies your app to Colada, it is not a password. Still, keep it out of source control:
-put it in a gitignored `local.properties` and read it via `BuildConfig`, the way
-[`example/`](../example) does, rather than hardcoding it in a committed file.
+put it in a gitignored `local.properties` and read it into your build via `BuildConfig`
+rather than hardcoding it in a committed file.
 
 ## Step 1 — Add the dependency
 
@@ -44,7 +41,7 @@ The SDK must be started before *anything else* touches it, and from the `Applica
 class — not from an Activity:
 
 ```kotlin
-class ExampleApp : Application() {
+class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         Colada.initialize(
@@ -58,7 +55,7 @@ class ExampleApp : Application() {
 Always initialize from `Application.onCreate()`, not an Activity — the SDK may need to run
 before any screen exists, and starting it later can miss that.
 
-Register your Application class in the manifest (`android:name=".ExampleApp"` on your
+Register your Application class in the manifest (`android:name=".MyApplication"` on your
 `<application>` element).
 
 See [`configuration.md`](configuration.md) for the full set of `ColadaConfig` options
@@ -117,10 +114,9 @@ The nine event types, which one to fire when, and required fields are all in
 
 ## Step 7 — Verify
 
-1. **Run the example app first.** `cd example && ./gradlew :app:installDebug` with a device
-   or emulator connected, and your tenant key in `example/local.properties`
-   (`colada.tenantKey=pk_live_...` — copy `local.properties.example` to get started).
+1. **Build and install your app** with a device or emulator connected, and a real tenant
+   key in place.
 2. **Logcat is the fastest signal.** `adb logcat -s ColadaSDK:V` — a successful handshake
    logs the resolved attribution; a tracked event logs `enqueued` / `accepted`.
-3. If attribution reports `matched: false`, that's often correct, not a bug — start with
-   the decision tree in [`troubleshooting.md`](troubleshooting.md).
+3. If attribution reports `matched: false`, that's often correct, not a bug — see
+   [`troubleshooting.md`](troubleshooting.md).
