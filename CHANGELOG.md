@@ -3,10 +3,10 @@
 All notable changes to the Colada Android SDK are documented here. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/); versions follow semver.
 
-## [Unreleased]
+## [0.1.1] - 2026-08-15
 
-No version has been published yet. This entry tracks what the SDK currently does, ahead of
-its first release.
+First public release, published to Maven Central as `io.coladaapp:colada-android` and
+`io.coladaapp:colada-core`.
 
 ### Added
 

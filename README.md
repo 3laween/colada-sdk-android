@@ -33,14 +33,9 @@ Full detail, including why AGP and Gradle need to move together, is in
 ```kotlin
 // build.gradle.kts
 dependencies {
-    implementation("io.coladaapp:colada-android:0.17.0")
+    implementation("io.coladaapp:colada-android:0.1.1")
 }
 ```
-
-> **Status note:** the SDK is not yet published to Maven Central. Until it is, this
-> coordinate resolves from `mavenLocal()` instead — add `mavenLocal()` to your
-> `settings.gradle.kts` repositories. Once published, this line works as written, with no
-> other change to your build.
 
 `colada-android` depends on `colada-core` and re-exports its public types
 (`AttributionResult`, `ColadaEvent`, `DeferredDeepLink`, etc.), so this single line is

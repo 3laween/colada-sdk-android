@@ -2,7 +2,7 @@
 
 | Colada Android SDK | Minimum Android | compileSdk / targetSdk | AGP | Gradle | Kotlin | JDK |
 |---|---|---|---|---|---|---|
-| 0.17.0 | API 23 (Android 6.0) | 36 | 8.13.2 | 8.14.5 | 2.2.21 | 17 (build-time only) |
+| 0.1.1 | API 23 (Android 6.0) | 36 | 8.13.2 | 8.14.5 | 2.2.21 | 17 (build-time only) |
 
 **Reading this table:** the SDK is built and tested against the versions in its own row.
 Newer AGP/Gradle/Kotlin in your app usually work too — Android libraries are generally
