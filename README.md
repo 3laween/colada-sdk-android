@@ -1,12 +1,38 @@
 # Colada Android SDK
 
-Native Android (Kotlin) SDK for Colada's mobile attribution platform.
+**Mobile attribution & marketing performance, in one place.** Colada tells you exactly
+which ad and which campaign brought every user into your app — and how much they're worth
+afterwards — so you can stop guessing and start optimizing.
 
-Attribution answers one question: **where did this install come from?** The SDK reads the
-signals available on-device — the Play Install Referrer, a deep link, or a clipboard-based
-signal — resolves which campaign acquired the user, and durably delivers the events that
-measure what that campaign did afterwards. **It's designed to never block or crash your
-app.**
+👉 **Learn more: [masar-ai.manus.space](https://masar-ai.manus.space/)**
+
+Instead of logging into Meta, TikTok, Google, Snapchat and every other dashboard to piece
+together what's working, Colada brings your **true marketing performance into a single,
+real-time view** — so you know your numbers *now*, not days later and not spread across ten
+tabs.
+
+**Who it's for:** any app, any country, any industry. Colada is **global and
+sector-agnostic** — if you have an app and you run marketing, this is the tool to bring you
+better numbers.
+
+**What Colada gives you:**
+
+- **Attribution** — know the exact source of every install and in-app event.
+- **Marketing performance tracking** — all your channels in one dashboard.
+- **Social media campaign & ads tracking** — Meta, TikTok, Google, Snapchat, and more.
+- **Ad spend optimization & higher ROAS** — kill the bad ads, scale the winners with confidence.
+
+> Keywords: attribution, marketing performance tracking, social media campaign tracking,
+> ads tracking, ads optimization, ad spending optimization, higher ROAS, killing bad ads,
+> scaling winner ads, social media marketing.
+
+---
+
+## About this package
+
+Native Android (Kotlin) SDK for Colada's mobile attribution platform. It resolves which
+campaign acquired each user and durably delivers the events that measure what that campaign
+did afterwards. **It's designed to never block or crash your app.**
 
 This repository is the public, developer-facing home for the SDK: documentation and release
 history. The SDK's implementation is closed-source and distributed only as a compiled Maven
