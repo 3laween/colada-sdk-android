@@ -3,6 +3,21 @@
 All notable changes to the Colada Android SDK are documented here. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/); versions follow semver.
 
+## [0.2.1] - 2026-09-27
+
+### Added
+
+- **Saudi Arabia region.** Public keys starting `pk_ksa_` are accepted and the SDK talks to
+  `https://api-ksa.coladaapp.io` for them; `pk_live_` keys keep using
+  `https://backend.coladaapp.io`. Chosen from the key alone — no code change.
+- `ColadaConfig.KSA_BASE_URL`, `ColadaConfig.KSA_TENANT_KEY_PREFIX`,
+  `ColadaConfig.effectiveBaseUrl` and `ColadaConfig.baseUrlForKey()` (additive).
+
+### Fixed
+
+- A cached auth token is re-minted if the key's region changes, instead of being sent to a
+  backend that never issued it.
+
 ## [0.1.1] - 2026-08-15
 
 First public release, published to Maven Central as `io.coladaapp:colada-android` and

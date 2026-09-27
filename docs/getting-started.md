@@ -16,7 +16,7 @@ finish, assuming a project that already builds.
 | **compileSdk 36** | Target the current API level |
 | **minSdk 23** | Android 6.0+ |
 | **AGP 8.13.2 + Gradle 8.14.5** | See [`COMPATIBILITY.md`](../COMPATIBILITY.md) for why these travel together |
-| **A Colada tenant key** | `pk_live_` + 64 hex characters, issued by Colada — ask your Colada contact |
+| **A Colada tenant key** | `pk_live_` (or `pk_ksa_` for Saudi-hosted tenants) + 64 hex characters, issued by Colada — ask your Colada contact |
 
 One thing about the key: **it is public by design** — it ships inside your APK and
 identifies your app to Colada, it is not a password. Still, keep it out of source control:
@@ -28,7 +28,7 @@ rather than hardcoding it in a committed file.
 ```kotlin
 // build.gradle.kts (app module)
 dependencies {
-    implementation("io.coladaapp:colada-android:0.1.1")
+    implementation("io.coladaapp:colada-android:0.2.1")
 }
 ```
 
