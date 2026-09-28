@@ -3,6 +3,12 @@
 All notable changes to the Colada Android SDK are documented here. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/); versions follow semver.
 
+## [0.2.2] - 2026-09-28
+
+### Changed
+
+- **Backend moved.** The SDK now talks to `https://api-ksa.coladaapp.io` instead of `https://backend.coladaapp.io`. No integration change.
+
 ## [0.1.1] - 2026-08-15
 
 First public release, published to Maven Central as `io.coladaapp:colada-android` and
