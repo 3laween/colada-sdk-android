@@ -13,8 +13,7 @@ Colada.initialize(
 ## `publicTenantKey` (required)
 
 Your app's public API key, issued by Colada. Format: `pk_live_` followed by 64 hexadecimal
-characters (`pk_ksa_` for tenants hosted in Saudi Arabia — the SDK then talks to
-`https://api-ksa.coladaapp.io` automatically; leave `baseUrl` at its default). Hardcode it per app build via `BuildConfig` (see
+characters. Hardcode it per app build via `BuildConfig` (see
 [`getting-started.md`](getting-started.md)) — never read it from a deep link or any other
 source your app doesn't fully control.
 
