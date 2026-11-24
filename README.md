@@ -95,13 +95,13 @@ Colada.addAttributionListener { result ->
 }
 ```
 
-If the same event also reaches the ad platforms from another integration (your own pixel or a
-platform such as Salla), pass that integration's event id so the platforms count it once:
+If the same event also reaches the ad platforms from another integration (your own pixel or your
+store platform), pass that integration's event id so the platforms count it once:
 
 ```kotlin
 Colada.track(
     ColadaEvent.Purchase(amount = 49.99, currency = "SAR", orderId = "ORD-123"),
-    eventId = sallaEventId,
+    eventId = storeEventId,
 )
 ```
 

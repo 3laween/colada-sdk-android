@@ -8,7 +8,7 @@ All notable changes to the Colada Android SDK are documented here. Format loosel
 ### Added
 
 - **Optional `eventId` on `Colada.track()`.** If the same event also reaches the ad platforms
-  from another integration (your own pixel or a platform such as Salla), pass that
+  from another integration (your own pixel or your store platform), pass that
   integration's event id so the platforms count it once — Colada forwards it as
   Meta/TikTok/Snapchat `event_id` and Google `transactionId`. Kotlin:
   `Colada.track(event, eventId = id)`; wrappers: `Colada.track(eventName, metadata, eventId)`.

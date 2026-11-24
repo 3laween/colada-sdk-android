@@ -75,14 +75,14 @@ fun onPurchaseCompleted(amount: Double, currency: String, orderId: String) {
 
 ## Deduplicating with another integration — `eventId`
 
-If the same event also reaches the ad platforms from another integration (your own pixel or a
-platform such as Salla), pass that integration's event id so the platforms count it once:
+If the same event also reaches the ad platforms from another integration (your own pixel or your
+store platform), pass that integration's event id so the platforms count it once:
 
 ```kotlin
-fun onPurchaseAlsoSentBySalla(amount: Double, currency: String, orderId: String, sallaEventId: String) {
+fun onPurchaseAlsoSentByStorePlatform(amount: Double, currency: String, orderId: String, storeEventId: String) {
     Colada.track(
         ColadaEvent.Purchase(amount = amount, currency = currency, orderId = orderId),
-        eventId = sallaEventId,
+        eventId = storeEventId,
     )
 }
 ```
