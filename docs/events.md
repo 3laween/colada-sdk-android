@@ -87,6 +87,10 @@ fun onPurchaseAlsoSentBySalla(amount: Double, currency: String, orderId: String,
 }
 ```
 
+- **One id per event.** Use the id your other integration sent for *that same* event — its
+  purchase id for the purchase, its registration id for the registration — and pass nothing
+  for an event it doesn't send. Colada also uses the id to spot duplicates, so reusing one id
+  for two different events makes the backend drop the second one.
 - **Optional.** Omit it (or pass `null`) and nothing changes.
 - Colada forwards it to Meta, TikTok and Snapchat as `event_id` and to Google as
   `transactionId`, and uses it as its own idempotency key. The queued event keeps the same id

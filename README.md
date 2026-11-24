@@ -105,6 +105,11 @@ Colada.track(
 )
 ```
 
+**Give every event its own id.** Use the id your other integration sent for *that same*
+event — its purchase id for the purchase, its registration id for the registration — and
+pass nothing for an event it doesn't send. Colada also uses the id to spot duplicates, so
+reusing one id for two different events makes the backend drop the second one.
+
 It is optional — omit it and nothing changes. See [`docs/events.md`](docs/events.md).
 
 Deep-link forwarding (the one step every integration needs but this snippet can't show in
