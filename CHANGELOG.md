@@ -3,6 +3,27 @@
 All notable changes to the Colada Android SDK are documented here. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/); versions follow semver.
 
+## [0.3.0] - 2026-11-24
+
+### Upgrade notes
+
+- **Don't downgrade below 0.3.0 after shipping it.** 0.3.0 upgrades the on-device event queue
+  database. Upgrading is safe and queued events are kept, but an app that ships 0.3.0 and then
+  goes back to 0.2.2 or older can't open that database: events are not stored or sent until the
+  app is reinstalled.
+
+### Added
+
+- **Optional `eventId` on `Colada.track()`.** If the same event also reaches the ad platforms
+  from another integration (your own pixel or your store platform), pass that
+  integration's event id so the platforms count it once — Colada forwards it as
+  Meta/TikTok/Snapchat `event_id` and Google `transactionId`. Kotlin:
+  `Colada.track(event, eventId = id)`; wrappers: `Colada.track(eventName, metadata, eventId)`.
+  Optional and additive — existing calls are unchanged, and without it nothing different is
+  sent. The id is kept with the queued event, so retries carry the same id. Trimmed; blank
+  counts as none; longer than 256 characters is not sent (with a warning, or an
+  `IllegalArgumentException` under `strictMode`).
+
 ## [0.2.2] - 2026-09-28
 
 ### Changed

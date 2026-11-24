@@ -59,7 +59,7 @@ Full detail, including why AGP and Gradle need to move together, is in
 ```kotlin
 // build.gradle.kts
 dependencies {
-    implementation("io.coladaapp:colada-android:0.2.2")
+    implementation("io.coladaapp:colada-android:0.3.0")
 }
 ```
 
@@ -94,6 +94,23 @@ Colada.addAttributionListener { result ->
     }
 }
 ```
+
+If the same event also reaches the ad platforms from another integration (your own pixel or your
+store platform), pass that integration's event id so the platforms count it once:
+
+```kotlin
+Colada.track(
+    ColadaEvent.Purchase(amount = 49.99, currency = "SAR", orderId = "ORD-123"),
+    eventId = storeEventId,
+)
+```
+
+**Give every event its own id.** Use the id your other integration sent for *that same*
+event — its purchase id for the purchase, its registration id for the registration — and
+pass nothing for an event it doesn't send. Colada also uses the id to spot duplicates, so
+reusing one id for two different events makes the backend drop the second one.
+
+It is optional — omit it and nothing changes. See [`docs/events.md`](docs/events.md).
 
 Deep-link forwarding (the one step every integration needs but this snippet can't show in
 three lines) is in [`docs/deep-links.md`](docs/deep-links.md) — read that before you ship.

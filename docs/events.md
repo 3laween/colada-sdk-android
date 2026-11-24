@@ -73,6 +73,33 @@ fun onPurchaseCompleted(amount: Double, currency: String, orderId: String) {
 }
 ```
 
+## Deduplicating with another integration — `eventId`
+
+If the same event also reaches the ad platforms from another integration (your own pixel or your
+store platform), pass that integration's event id so the platforms count it once:
+
+```kotlin
+fun onPurchaseAlsoSentByStorePlatform(amount: Double, currency: String, orderId: String, storeEventId: String) {
+    Colada.track(
+        ColadaEvent.Purchase(amount = amount, currency = currency, orderId = orderId),
+        eventId = storeEventId,
+    )
+}
+```
+
+- **One id per event.** Use the id your other integration sent for *that same* event — its
+  purchase id for the purchase, its registration id for the registration — and pass nothing
+  for an event it doesn't send. Colada also uses the id to spot duplicates, so reusing one id
+  for two different events makes the backend drop the second one.
+- **Optional.** Omit it (or pass `null`) and nothing changes.
+- Colada forwards it to Meta, TikTok and Snapchat as `event_id` and to Google as
+  `transactionId`, and uses it as its own idempotency key. The queued event keeps the same id
+  on every retry.
+- Surrounding whitespace is trimmed and a blank id counts as none. An id longer than 256
+  characters is **not sent** — the event is still tracked, without it — and a warning is
+  logged; with `strictMode` on, `track()` throws `IllegalArgumentException` instead.
+- Pass the exact id the other integration sends. The SDK never invents one.
+
 ## `Subscribe`, `AddToCart`, `InitiateCheckout`, `ViewContent`, `PlaceAnOrder`, `Search`
 
 These carry no required fields; fire them at the natural moment, once per user action.
@@ -95,6 +122,14 @@ use the wire-name overload with a plain map:
 ```kotlin
 fun trackFromWrapper(eventName: String, metadata: Map<String, Any?>) {
     Colada.track(eventName, metadata)
+}
+```
+
+To forward an `eventId` (see above), use the three-argument overload; `null` sends none:
+
+```kotlin
+fun trackFromWrapperWithEventId(eventName: String, metadata: Map<String, Any?>, eventId: String?) {
+    Colada.track(eventName, metadata, eventId)
 }
 ```
 

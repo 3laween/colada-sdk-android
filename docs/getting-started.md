@@ -28,7 +28,7 @@ rather than hardcoding it in a committed file.
 ```kotlin
 // build.gradle.kts (app module)
 dependencies {
-    implementation("io.coladaapp:colada-android:0.2.2")
+    implementation("io.coladaapp:colada-android:0.3.0")
 }
 ```
 
