@@ -3,6 +3,20 @@
 All notable changes to the Colada Android SDK are documented here. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/); versions follow semver.
 
+## [Unreleased]
+
+### Added
+
+- **Optional `eventId` on `Colada.track()`.** If the same event also reaches the ad platforms
+  from another integration (your own pixel or a platform such as Salla), pass that
+  integration's event id so the platforms count it once — Colada forwards it as
+  Meta/TikTok/Snapchat `event_id` and Google `transactionId`. Kotlin:
+  `Colada.track(event, eventId = id)`; wrappers: `Colada.track(eventName, metadata, eventId)`.
+  Optional and additive — existing calls are unchanged, and without it nothing different is
+  sent. The id is kept with the queued event, so retries carry the same id. Trimmed; blank
+  counts as none; longer than 256 characters is not sent (with a warning, or an
+  `IllegalArgumentException` under `strictMode`).
+
 ## [0.2.2] - 2026-09-28
 
 ### Changed

@@ -95,6 +95,18 @@ Colada.addAttributionListener { result ->
 }
 ```
 
+If the same event also reaches the ad platforms from another integration (your own pixel or a
+platform such as Salla), pass that integration's event id so the platforms count it once:
+
+```kotlin
+Colada.track(
+    ColadaEvent.Purchase(amount = 49.99, currency = "SAR", orderId = "ORD-123"),
+    eventId = sallaEventId,
+)
+```
+
+It is optional — omit it and nothing changes. See [`docs/events.md`](docs/events.md).
+
 Deep-link forwarding (the one step every integration needs but this snippet can't show in
 three lines) is in [`docs/deep-links.md`](docs/deep-links.md) — read that before you ship.
 

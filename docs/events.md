@@ -73,6 +73,29 @@ fun onPurchaseCompleted(amount: Double, currency: String, orderId: String) {
 }
 ```
 
+## Deduplicating with another integration — `eventId`
+
+If the same event also reaches the ad platforms from another integration (your own pixel or a
+platform such as Salla), pass that integration's event id so the platforms count it once:
+
+```kotlin
+fun onPurchaseAlsoSentBySalla(amount: Double, currency: String, orderId: String, sallaEventId: String) {
+    Colada.track(
+        ColadaEvent.Purchase(amount = amount, currency = currency, orderId = orderId),
+        eventId = sallaEventId,
+    )
+}
+```
+
+- **Optional.** Omit it (or pass `null`) and nothing changes.
+- Colada forwards it to Meta, TikTok and Snapchat as `event_id` and to Google as
+  `transactionId`, and uses it as its own idempotency key. The queued event keeps the same id
+  on every retry.
+- Surrounding whitespace is trimmed and a blank id counts as none. An id longer than 256
+  characters is **not sent** — the event is still tracked, without it — and a warning is
+  logged; with `strictMode` on, `track()` throws `IllegalArgumentException` instead.
+- Pass the exact id the other integration sends. The SDK never invents one.
+
 ## `Subscribe`, `AddToCart`, `InitiateCheckout`, `ViewContent`, `PlaceAnOrder`, `Search`
 
 These carry no required fields; fire them at the natural moment, once per user action.
@@ -95,6 +118,14 @@ use the wire-name overload with a plain map:
 ```kotlin
 fun trackFromWrapper(eventName: String, metadata: Map<String, Any?>) {
     Colada.track(eventName, metadata)
+}
+```
+
+To forward an `eventId` (see above), use the three-argument overload; `null` sends none:
+
+```kotlin
+fun trackFromWrapperWithEventId(eventName: String, metadata: Map<String, Any?>, eventId: String?) {
+    Colada.track(eventName, metadata, eventId)
 }
 ```
 
