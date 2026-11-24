@@ -3,7 +3,14 @@
 All notable changes to the Colada Android SDK are documented here. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/); versions follow semver.
 
-## [Unreleased]
+## [0.3.0] - 2026-11-24
+
+### Upgrade notes
+
+- **Don't downgrade below 0.3.0 after shipping it.** 0.3.0 upgrades the on-device event queue
+  database. Upgrading is safe and queued events are kept, but an app that ships 0.3.0 and then
+  goes back to 0.2.2 or older can't open that database: events are not stored or sent until the
+  app is reinstalled.
 
 ### Added
 
